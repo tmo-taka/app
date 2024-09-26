@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.11.8",
+    "@graphql-codegen/cli": "^5.0.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.108",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
+    "graphql": "^16.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -19,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "graphql-codegen": "npx graphql-code-generator --require dotenv/config --config ./src/codegen.ts --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +43,9 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^16.0.1"
+    "@graphql-codegen/client-preset": "^4.3.3",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^22.6.1",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   }
 }
