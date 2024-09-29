@@ -6712,10 +6712,10 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type GetNavigationQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllNavigationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetNavigationQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', slug: string }> };
+export type GetAllNavigationsQuery = { __typename?: 'Query', navigations: Array<{ __typename?: 'Navigation', navId?: string | null }> };
 
 
-export const GetNavigationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNavigation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pages"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locales"},"value":{"kind":"EnumValue","value":"en"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]} as unknown as DocumentNode<GetNavigationQuery, GetNavigationQueryVariables>;
+export const GetAllNavigationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllNavigations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navigations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navId"}}]}}]}}]} as unknown as DocumentNode<GetAllNavigationsQuery, GetAllNavigationsQueryVariables>;

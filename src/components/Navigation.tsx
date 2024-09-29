@@ -1,11 +1,16 @@
-import {fetchNavigation} from '@/utils/fetchNavigation'
+import {fetchNavigation} from '@/utils/graphql/fetchNavigation'
+import { Loading } from '@/components/Loading';
 
-export const Navigation = (props: Props):JSX.Element => {
-    const {loading, data, error} = await fetchNavigation();
-    console.log(data);
+export const Navigation = ():JSX.Element => {
+    const {loading, data, error} = fetchNavigation();
+    if(loading) {
+        return <Loading />
+    }
     return (
         <div>
-            Navigation
+            {
+                data?.navigations.map((nav) => <div key={nav.navId}>{nav.navId}</div>)
+            }
         </div>
     )
 }
