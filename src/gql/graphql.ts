@@ -6717,5 +6717,13 @@ export type GetAllNavigationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAllNavigationsQuery = { __typename?: 'Query', navigations: Array<{ __typename?: 'Navigation', navId?: string | null }> };
 
+export type GetSinglePageQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetSinglePageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', slug: string, title: string, subtitle?: string | null } | null };
+
 
 export const GetAllNavigationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllNavigations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navigations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navId"}}]}}]}}]} as unknown as DocumentNode<GetAllNavigationsQuery, GetAllNavigationsQueryVariables>;
+export const GetSinglePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getSinglePage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"subtitle"}}]}}]}}]} as unknown as DocumentNode<GetSinglePageQuery, GetSinglePageQueryVariables>;

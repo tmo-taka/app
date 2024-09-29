@@ -2,7 +2,8 @@ import React from 'react';
 import '@/App';
 import { ApolloProvider } from "@apollo/client";
 import { client } from '@/utils/graphql/client'
-import {Navigation} from '@/components/Navigation';
+import { Navigation } from '@/components/Navigation';
+import { Page } from '@/components/Page';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="App">
         これ
         <Navigation />
+        <Page />
       </div>
     </ApolloProvider>
   );
