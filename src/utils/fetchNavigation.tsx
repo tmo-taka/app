@@ -1,10 +1,10 @@
 import { ApolloClient, InMemoryCache, useQuery } from '@apollo/client';
 import { graphql } from '../gql/gql';
 
-const hygraphRegion = process.env.REACT_APP.HYGRAPH_REGION;
-const hygraphId = process.env.REACT_APP.HYGRAPH_ID;
+const hygraphRegion = process.env.REACT_APP_HYGRAPH_REGION;
+const hygraphId = process.env.REACT_APP_HYGRAPH_ID;
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: `https://${hygraphRegion}.cdn.hygraph.com/content/${hygraphId}/master`,
   cache: new InMemoryCache(),
 });
