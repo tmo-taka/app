@@ -1,5 +1,5 @@
-import {fetchNavigation} from '@/utils/graphql/fetchNavigation'
-import { Loading } from '@/components/Loading';
+import {fetchNavigation} from '../utils/graphql/fetchNavigation'
+import { Loading } from './Loading';
 
 export const Navigation = ():JSX.Element => {
     const {loading, data, error} = fetchNavigation();

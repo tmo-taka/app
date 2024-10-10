@@ -1,0 +1,26 @@
+type Slug = 'about' | 'introduction'
+
+# type PageData {
+#     slug: Slug!,
+#     title: String!,
+#     subtitle: String!
+# }
+
+input PostPageInput {
+    subtitle: String!
+}
+
+type Mutation {
+    updatePage(slug: Slug!, data: PostPageInput!): PageData!
+}
+
+mutation UpdatePage($slug: Slug!, $data: PostPageInput!) {
+    updatePage(
+        where: {slug: $slug},
+        data: {$data
+    ){
+        slug,
+        title,
+        subtitle
+    }
+}

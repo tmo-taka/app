@@ -1,4 +1,4 @@
-import { graphql } from '@/gql/gql';
+import { graphql } from '../../gql/gql';
 
 type Slug = 'about' | 'introduction'
 
