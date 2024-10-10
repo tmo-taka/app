@@ -7,6 +7,7 @@ import { Navigation } from './components/Navigation';
 import { Page } from './components/Page';
 import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
+import { Form } from './components/TanstackForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         <Navigation />
-        {/* <Page /> */}
+        <Form />
         <Component1 />
         <input type="text" onChange={inputText} value={text}/>
         <div>{text}</div>
