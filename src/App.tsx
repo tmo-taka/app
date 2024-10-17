@@ -9,10 +9,17 @@ import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
 import { Form } from './components/TanstackForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './actions';
+import { type RootState } from './reducers';
+
 
 function App() {
+  const counter = useSelector((state: RootState) => state.counter.value);
   const [text, setText] = useState('');
   const count = useRef(0);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     count.current++;
@@ -22,6 +29,10 @@ function App() {
     console.log('hai');
     const newText = event.target.value;
     setText(newText)
+  }
+
+  const handleClick = ():void => {
+    dispatch(increment())
   }
 
   return (
@@ -37,6 +48,8 @@ function App() {
         <Navigation />
         <Form />
         <Component1 />
+        <button onClick={handleClick}>テスト</button>
+        <div>{counter}</div>
         <input type="text" onChange={inputText} value={text}/>
         <div>{text}</div>
         <ReducerTest />
