@@ -9,17 +9,14 @@ import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
 import { Form } from './components/TanstackForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useCounter } from './hooks/useCounter';
 import { increment, decrement } from './actions';
-import { type RootState } from './reducers';
 
 
 function App() {
-  const counter = useSelector((state: RootState) => state.counter.value);
+  const [counter, dispatchAction] = useCounter();
   const [text, setText] = useState('');
   const count = useRef(0);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     count.current++;
@@ -32,7 +29,7 @@ function App() {
   }
 
   const handleClick = ():void => {
-    dispatch(increment())
+    dispatchAction(increment())
   }
 
   return (
