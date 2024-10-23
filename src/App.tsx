@@ -8,7 +8,7 @@ import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
 import { GetParams } from './components/GetParams';
 import { Form } from './components/TanstackForm';
-import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import { useCounter } from './hooks/useCounter';
 import { increment, decrement } from './actions';
 import Button from '@mui/material/Button';
@@ -50,7 +50,20 @@ function App() {
         これ {count.current}
         <BrowserRouter>
             {
-              routes.map(({path,label}) =><Link key={path} to={path}>{label}</Link>)
+              routes.map(({path,label}) =>
+                <NavLink key={path} to={path}style={
+                  ({isActive}) => (
+                    isActive 
+                    ? {
+                      textDecoration: 'none',
+                      color: 'red'
+                    }
+                    :{}
+                  )
+                }>
+                  {label}
+                </NavLink>
+              )
             }
             <Link to="query?id=2">クエリ付き</Link>
           <Routes>
