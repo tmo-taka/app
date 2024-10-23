@@ -5,7 +5,6 @@ import Card from '@mui/material/Card';
 export const Effect = () => {
 
     const [test, setTest] = useState('テスト');
-
     useEffect(() => {
         if(test === 'テスト'){
             testSet();

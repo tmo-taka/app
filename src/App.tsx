@@ -6,8 +6,9 @@ import { client } from './utils/graphql/client'
 import { Navigation } from './components/Navigation';
 import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
+import { GetParams } from './components/GetParams';
 import { Form } from './components/TanstackForm';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useParams } from "react-router-dom";
 import { useCounter } from './hooks/useCounter';
 import { increment, decrement } from './actions';
 import Button from '@mui/material/Button';
@@ -48,7 +49,13 @@ function App() {
       <div className="App">
         これ {count.current}
         <BrowserRouter>
+            {
+              routes.map(({path,label}) =><Link key={path} to={path}>{label}</Link>)
+            }
           <Routes>
+            <Route path="/data">
+              <Route path=":name" element={<GetParams />} />
+            </Route>
             {
               routes.map(({path,Component}) =><Route key={path} path={path} Component={Component} />)
             }
