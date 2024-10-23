@@ -39,11 +39,6 @@ function App() {
     dispatchAction(decrement())
   }
 
-  // const changeComponent = ():void => {
-  //   const updateFlag = !flag;
-  //   setFlag(updateFlag);
-  // }
-
   return (
     <ApolloProvider client={client}>
       <div className="App">
