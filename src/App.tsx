@@ -52,6 +52,7 @@ function App() {
             {
               routes.map(({path,label}) =><Link key={path} to={path}>{label}</Link>)
             }
+            <Link to="query?id=2">クエリ付き</Link>
           <Routes>
             <Route path="/data">
               <Route path=":name" element={<GetParams />} />

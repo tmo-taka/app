@@ -1,6 +1,7 @@
 import { Page } from '../components/Page';
 import { Ecostore } from '../components/Ecostore';
 import { Effect } from '../components/Effect';
+import { Query } from '../components/Query';
 import { type RouteProps } from "react-router-dom";
 
 const Component = ():JSX.Element => {
@@ -26,6 +27,11 @@ export const routes = [
         path: '/effect',
         label: 'useEffect',
         Component: Effect
+    },
+    {
+        path: '/query',
+        label: 'クエリ付き',
+        Component: Query
     },
     {
         path: '*',
