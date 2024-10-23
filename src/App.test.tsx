@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, shallow } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux';
 import { rootReducer } from './reducers'
@@ -36,4 +36,19 @@ describe('APP', () => {
     expect(window.location.pathname).toEqual('/eco')
   });
 
+  test('redux', async() => {
+    const store = createStore(rootReducer)
+    const user = userEvent;
+    const {container} = render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+    const counter = container.querySelector('#test');
+    expect(counter).toHaveTextContent("0");
+    await user.click(screen.getByText(/redux add/i));
+    expect(counter).toHaveTextContent("1");
+    await user.click(screen.getByText(/redux minus/i));
+    expect(counter).toHaveTextContent("0");
+  })
 })

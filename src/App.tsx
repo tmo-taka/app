@@ -77,7 +77,7 @@ function App() {
           <Button onClick={handleClick}>redux add</Button>
           <Button onClick={minus}>redux minus</Button>
         </ButtonGroup>
-        <div>{counter}</div>
+        <div id="test">{counter}</div>
         <input type="text" onChange={inputText} value={text}/>
         <div>{text}</div>
         <ReducerTest />
