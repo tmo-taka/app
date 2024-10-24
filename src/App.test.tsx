@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, shallow } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux';
 import { rootReducer } from './reducers'
@@ -8,13 +8,13 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './App';
 
 describe('APP', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.doMock("@apollo/client", () => {
       return {
         ApolloProvider: (props: {children: any}) => <div>{props.children}</div>,
       };
     });
-    jest.doMock("./utils/graphql/client", () => {
+    jest.doMock("./utils/graphql/client",() => {
       return {
         client: 'テスト',
       };
@@ -50,5 +50,7 @@ describe('APP', () => {
     expect(counter).toHaveTextContent("1");
     await user.click(screen.getByText(/redux minus/i));
     expect(counter).toHaveTextContent("0");
+    await user.click(screen.getByText(/redux minus/i));
+    expect(counter?.textContent).toContain("-")
   })
 })
