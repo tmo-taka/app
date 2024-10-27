@@ -46,9 +46,9 @@ function App() {
         <BrowserRouter>
             {
               routes.map(({path,label}) =>
-                <NavLink key={path} to={path}style={
+                <NavLink key={path} to={path} style={
                   ({isActive}) => (
-                    isActive 
+                    isActive
                     ? {
                       textDecoration: 'none',
                       color: 'red'
@@ -60,7 +60,7 @@ function App() {
                 </NavLink>
               )
             }
-            <Link to="query?id=2">クエリ付き</Link>
+            <Link to="query?id=2">クエリパラメータ付き</Link>
           <Routes>
             <Route path="/data">
               <Route path=":name" element={<GetParams />} />
