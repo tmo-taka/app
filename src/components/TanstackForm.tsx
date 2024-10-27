@@ -1,9 +1,11 @@
-import { useForm } from '@tanstack/react-form'
+import { useForm , type Field} from '@tanstack/react-form'
+import Button from '@mui/material/Button'
 
 export const Form = ():Jsx.Element => {
     const form = useForm({
         defaultValues: {
             email: '',
+            tel: ''
         },
         validators: {
             onSubmitAsync: async ({ value }) => {
@@ -17,6 +19,15 @@ export const Form = ():Jsx.Element => {
                         },
                     }
                 }
+                const telPattern = /^080-*$/g;
+                const isCurrentTel= value.email.match(telPattern)
+                if (!isCurrentTel) {
+                    return {
+                        fields: {
+                            tel: '電話番号がおかしいです',
+                        },
+                    }
+                }
                 return null
             },
         },
@@ -25,8 +36,10 @@ export const Form = ():Jsx.Element => {
             console.log(value)
         },
     })
+
     return (
         <form
+            name="tanstack"
             onSubmit={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -45,6 +58,7 @@ export const Form = ():Jsx.Element => {
                         <label>{field.name}</label>
                         <input
                             name={field.name}
+                            aria-label={field.name}
                             value={field.state.value}
                             onBlur={field.handleBlur}
                             onChange={(e) => field.handleChange(e.target.value)}
@@ -56,6 +70,38 @@ export const Form = ():Jsx.Element => {
                 )}
                 />
             </div>
+            <div>
+            <form.Field
+                name="tel"
+                validators={{
+                    onBlur: ({value}) => !value.includes('080') && value ? "正しい電話番号を入力してください。" : undefined,
+                }}
+                children={(field) => (
+                    <>
+                        <label>{field.name}</label>
+                        <input
+                            name={field.name}
+                            aria-label={field.name}
+                            value={field.state.value}
+                            onBlur={field.handleBlur}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                        />
+                        {field.state.meta.errors ? (
+                            <em role="alert">{field.state.meta.errors.join(', ')}</em>
+                        ) : null}
+                    </>
+                )}
+                />
+            </div>
+            {/* //NOTE: subscibeで監視状態にする */}
+            <form.Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                    <Button type="submit" variant="outlined" color="secondary" disabled={!canSubmit}>
+                        送信
+                    </Button>
+                )}
+            />
         </form>
     )
 }

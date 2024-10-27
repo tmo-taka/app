@@ -16,6 +16,11 @@ export const List = (props: Props):JSX.Element => {
                 <div>{props.title}</div>
                 <div>{props.description}</div>
             </div>
+            <div data-testid="wrapper" className="test">
+                <div>
+                    <p>テストテキスト</p>
+                </div>
+            </div>
         </li>
     )
 }
