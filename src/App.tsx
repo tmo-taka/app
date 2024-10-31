@@ -8,15 +8,20 @@ import { Component1 } from './components/NestedContext';
 import { ReducerTest } from './components/Reducer';
 import { GetParams } from './components/GetParams';
 import { Form } from './components/TanstackForm';
+import { Performance } from './components/Performance';
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import { useCounter } from './hooks/useCounter';
+import { useUser } from './hooks/useUser';
 import { increment, decrement } from './actions';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import Paper from '@mui/material/Paper';
 import {routes} from './routes/map'
 
 function App() {
   const [counter, dispatchAction] = useCounter();
+  const [user, dispatchUser] = useUser();
   const [text, setText] = useState('');
   const [flag,setFlag] = useState(false);
   const count = useRef(0);
@@ -39,8 +44,23 @@ function App() {
     dispatchAction(decrement())
   }
 
+  const changeName = ():void => {
+    dispatchUser({
+      type: 'NAME_CHANGE',
+      name: '本番ユーザー'
+    })
+  }
+
+  const changeAge = ():void => {
+    dispatchUser({
+      type: 'AGE_CHANGE',
+      age: 18
+    })
+  }
+
   return (
     <ApolloProvider client={client}>
+      <Performance />
       <div className="App">
         これ {count.current}
         <BrowserRouter>
@@ -81,6 +101,12 @@ function App() {
         <input type="text" onChange={inputText} value={text}/>
         <div>{text}</div>
         <ReducerTest />
+        <div>
+            <Paper>{user.name}</Paper>
+            <Paper>{user.age}</Paper>
+            <Chip label="名前を変える" onClick={changeName} />
+            <Chip label="年齢を変える" onClick={changeAge} />
+        </div>
       </div>
     </ApolloProvider>
   );
