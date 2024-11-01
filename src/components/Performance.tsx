@@ -6,7 +6,7 @@ type Props = {
 }
 
 const ChildPerformance = memo((props: Props):JSX.Element => {
-    console.log(`re-render Performane`);
+    console.log(`re-render Perfdormane`);
     return (
         <div onClick={props.clickFn}>
             {props.text}
