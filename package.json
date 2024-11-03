@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test -coverage",
     "eject": "react-scripts eject",
     "graphql-codegen": "npx graphql-code-generator --require dotenv/config --config ./src/codegen.ts --watch",
     "storybook": "storybook dev -p 6006",
@@ -54,6 +54,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@graphql-codegen/client-preset": "^4.3.3",
+    "@playwright/test": "^1.48.2",
     "@storybook/addon-essentials": "^8.3.6",
     "@storybook/addon-interactions": "^8.3.6",
     "@storybook/addon-links": "^8.3.6",

@@ -62,6 +62,7 @@ function App() {
     <ApolloProvider client={client}>
       <Performance />
       <div className="App">
+        <h1>これがテスト</h1>
         これ {count.current}
         <BrowserRouter>
             {
