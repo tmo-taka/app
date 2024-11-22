@@ -1,4 +1,4 @@
-// ルートマッピング
+// ルートマッピング コメント
 import { Page } from '../components/Page';
 import { Ecostore } from '../components/Ecostore';
 import { Effect } from '../components/Effect';
