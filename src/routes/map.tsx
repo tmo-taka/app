@@ -6,7 +6,7 @@ import { Query } from '../components/Query';
 import { type RouteProps } from "react-router-dom";
 
 const Component = ():JSX.Element => {
-    return (<div>エラーです</div>)
+    return (<div>エラーで</div>)
 }
 
 type LinkLabel = {

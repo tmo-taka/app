@@ -30,8 +30,8 @@ test.describe('top page', () => {
       await topPage.getByLabel('tel').fill('08035323219');
       await topPage.getByRole('button', { name: '送信' }).click();
       await topPage.getByText('不正やん').isVisible();
-    })
   })
+})
 
 
 
